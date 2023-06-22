@@ -8,7 +8,7 @@ const Header = () => {
     return (
 
         <Container>
-            <Link onClick={() => navigate("/")}>
+            <Link onClick={() => navigate('/')}>
                 <Title>Podcaster</Title>
             </Link>
         
