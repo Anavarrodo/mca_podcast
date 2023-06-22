@@ -42,7 +42,6 @@ const Title = styled.span`
     margin: auto;
     font-family: Montserrat-Bold;
     font-size: 20px;
-    font-weight: bold;
 `;
 
 const LoadingContent = styled.div`

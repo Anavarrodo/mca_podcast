@@ -3,7 +3,7 @@ import { baseUrl, list, detail } from './baseUrl';
 
 const getPodcastList = () => {
     const request = axios.get(`${baseUrl}${list}`);
-    return request.then(response => response.data.feed);
+    return request.then(response => response.data.feed.entry);
 }
 
 const getPodcastDetail = (id) => {
