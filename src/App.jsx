@@ -1,6 +1,8 @@
+import AppRouter from "./router/AppRouter";
+
 function App () {
 
-  return  <h1> Prueba técnica front end developer </h1>
+  return  <AppRouter />
   
 }
 
