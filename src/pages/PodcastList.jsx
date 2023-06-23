@@ -9,7 +9,7 @@ const PodcastList = () => {
     const [podcastsOriginal, setPodcastsOriginal] = useLocalStorage('podcasts', []);
 
     useEffect(() => {
-        getApi();
+        podcastsOriginal.length === 0 && getApi();
     }, []);
 
     const getApi = () => {
@@ -17,7 +17,7 @@ const PodcastList = () => {
             .then((podcasts) => {
                 setPodcastsOriginal(podcasts);
             })
-            .catch( () => console.error );
+            .catch( console.error );
     }
 
     return ( 
