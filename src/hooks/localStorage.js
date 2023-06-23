@@ -11,16 +11,15 @@ const useLocalStorage = ( keyName, defaultValue ) => {
     try {
       const value = localStorage.getItem(keyName);
       const storedExpirationTime = localStorage.getItem('expirationTime');
-
+      if (storedExpirationTime && currentTime > storedExpirationTime) {
+        // La información ha expirado
+        localStorage.clear();
+        location.reload();
+      }
       if (value) {
         return JSON.parse(value);
       } else {
         localStorage.setItem(keyName, JSON.stringify(defaultValue));
-        if (storedExpirationTime && currentTime > storedExpirationTime) {
-          // La información ha expirado
-          localStorage.clear();
-          location.reload();
-        }
         return defaultValue;
       }
     } catch (err) {
