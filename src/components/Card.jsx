@@ -1,17 +1,17 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
-const Card = ({ img, name, artist, id }) => {
+const Card = ({ data }) => {
+    let navigate = useNavigate();
     
-    const handleClick = () => {
-        console.log(id)
-    }
-
     return (
-        <Box onClick={ handleClick }>
-            <Image src={ img }/>
+        <Box onClick={() => navigate(`/podcast/${data.id.attributes['im:id']}/`, {state: {
+            data: data
+        }})}>
+            <Image src={ data['im:image'][2].label }/>
             <Info>
-                <Name>{name}</Name>
-                <Author>Author: { artist }</Author>
+                <Name>{data['im:name'].label}</Name>
+                <Author>Author: { data['im:artist'].label }</Author>
             </Info>
         </Box>
     );

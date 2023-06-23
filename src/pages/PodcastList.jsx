@@ -39,11 +39,8 @@ const PodcastList = () => {
             <BoxCards>
                 {podcastsFilter.map((podcast) => 
                     <Card 
-                        key={podcast.id.label} 
-                        img={podcast['im:image'][2].label}
-                        name={podcast['im:name'].label}
-                        artist={podcast['im:artist'].label}
-                        id={podcast.id.attributes['im:id']}
+                        key={podcast.id.label}
+                        data={podcast}
                     />
                 )}
             </BoxCards>
@@ -67,5 +64,5 @@ const BoxSearcher = styled.div`
 const BoxCards = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin-top: 32px;
+    margin-top: 60px;
 `;
