@@ -1,15 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {  useLocation } from 'react-router-dom';
 import apiServices from '../services/api';
-import { XMLParser } from 'fast-xml-parser';
+import Sidebar from '../components/Sidebar';
+import { convertXMLtoJSON } from '../utils/functions';
 
 const PodcasDetail = () => {
     const location = useLocation();
     const { state } = location;
-    console.log(state)
     const id = state.data.id.attributes['im:id'];
-    console.log(id);
 
+    const [ infoSidebar, setInfoSidebar ] = useState([]);
 
     useEffect(() =>{
         getApi();
@@ -18,34 +18,24 @@ const PodcasDetail = () => {
     const getApi = () => {
         apiServices.getPodcastDetail(id)
             .then((details) => {
-                console.log(details);
-                apiServices.getFeedPodcast(details.results[0].feedUrl)
-                .then((episodio) => {
-                    // Opciones para el parser
-                    let options = {
-                        attributeNamePrefix: "@_",
-                        attrNodeName: "attr", //default is 'false'
-                        textNodeName : "#text",
-                        ignoreAttributes : false,
-                        ignoreNameSpace : false,
-                        allowBooleanAttributes : false,
-                        parseNodeValue : true,
-                        parseAttributeValue : false,
-                        trimValues: true,
-                        cdataTagName: "__cdata", //default is 'false'
-                        cdataPositionChar: "\\c",
-                        parseTrueNumberOnly: false,
-                        arrayMode: false, //"strict"
-                    };
-                    
-                    const parser = new XMLParser(options);
-                    let jObj = parser.parse(episodio);
-                    console.log(jObj)
+                console.log(details)
+                apiServices.getPodcastEpisodes(details.results[0].feedUrl)
+                .then((episodie) => {
+                    console.log(episodie)
+                    const obJson = convertXMLtoJSON(episodie);         
+                    console.log(obJson)
+                    const { channel } = obJson.rss;
+                    setInfoSidebar({
+                        image: channel['itunes:image']['@_href'],
+                        title: channel.title,
+                        author: channel['itunes:author'],
+                        description: channel.description
+                    })
     })
             })
             .catch( console.error );
     }
-    return <h1>Podcast Detail</h1>
+    return (<><h1>Podcast Detail</h1><Sidebar info={ infoSidebar }/></>)
 
 };
 

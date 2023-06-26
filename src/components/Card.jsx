@@ -33,7 +33,8 @@ const Box = styled.div`
     margin: 68px  10px;
 `;
 
-const Image = styled.img`border-radius: 50%;
+const Image = styled.img`
+    border-radius: 50%;
     position: absolute;
     top: 0%;
     left: 50%;

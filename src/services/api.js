@@ -7,13 +7,22 @@ const getPodcastList = () => {
 }
 
 const getPodcastDetail = (id) => {
-    const request = axios.get(`${baseUrl}${detail}?id=${id}`);
+    const request = axios.get(`https://cors-anywhere.herokuapp.com/${baseUrl}${detail}?id=${id}`, {
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'Custom-Header': 'Valor personalizado',
+        },
+      });
     return request.then(response => response.data);
 }
 
-const getFeedPodcast = (url) => {
-    const request = axios.get(url);
+const getPodcastEpisodes = (url) => {
+    const request = axios.get(`https://cors-anywhere.herokuapp.com/${url}`, {
+        headers: {
+          'Origin': url,
+        },
+      });
     return request.then(response => response.data);
 }
 
-export default { getPodcastList, getPodcastDetail, getFeedPodcast };
+export default { getPodcastList, getPodcastDetail, getPodcastEpisodes };
