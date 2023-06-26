@@ -11,4 +11,9 @@ const getPodcastDetail = (id) => {
     return request.then(response => response.data);
 }
 
-export default { getPodcastList, getPodcastDetail };
+const getFeedPodcast = (url) => {
+    const request = axios.get(url);
+    return request.then(response => response.data);
+}
+
+export default { getPodcastList, getPodcastDetail, getFeedPodcast };
