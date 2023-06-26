@@ -1,21 +1,23 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-
+import AppContext from '../context/context';
 const Header = () => {
 
     let navigate = useNavigate();
+    const { currentLocation, setCurrentLocation } = useContext(AppContext);
 
     return (
 
         <Container>
-            <Link onClick={() => navigate('/')}>
+            <Link onClick={() => {setCurrentLocation(''); navigate('/')}}>
                 <Title>Podcaster</Title>
             </Link>
         
-                <LoadingContent>
+                {currentLocation === '' && <LoadingContent>
                     <Circle></Circle>
-                </LoadingContent>
-            
+                </LoadingContent>}
+                <p>Ubicación actual: {currentLocation}</p>
         </Container>
 
     );

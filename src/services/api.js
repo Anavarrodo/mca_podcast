@@ -18,9 +18,9 @@ const getPodcastDetail = (id) => {
 
 const getPodcastEpisodes = (url) => {
     const request = axios.get(`https://cors-anywhere.herokuapp.com/${url}`, {
-        headers: {
-          'Origin': url,
-        },
+        // headers: {
+        //   'Origin': url,
+        // },
       });
     return request.then(response => response.data);
 }

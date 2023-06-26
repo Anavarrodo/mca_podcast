@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import {  useLocation } from 'react-router-dom';
 import apiServices from '../services/api';
 import Sidebar from '../components/Sidebar';
 import { convertXMLtoJSON } from '../utils/functions';
+import AppContext from '../context/context';
 
 const PodcasDetail = () => {
     const location = useLocation();
     const { state } = location;
     const id = state.data.id.attributes['im:id'];
-
+    const { setCurrentLocation } = useContext(AppContext);
     const [ infoSidebar, setInfoSidebar ] = useState([]);
 
     useEffect(() =>{
@@ -31,6 +32,7 @@ const PodcasDetail = () => {
                         author: channel['itunes:author'],
                         description: channel.description
                     })
+                    setCurrentLocation('Detalle');
     })
             })
             .catch( console.error );
