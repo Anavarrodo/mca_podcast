@@ -91,4 +91,6 @@ const Description = styled.span`
     font-family: Montserrat-Regular;
     font-style: italic;
     line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;

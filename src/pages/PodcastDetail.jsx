@@ -15,6 +15,7 @@ const PodcastDetail = () => {
     const { setCurrentLocation } = useContext(AppContext);
 
     const [ infoSidebar, setInfoSidebar ] = useLocalStorage(`infoSidebar${id}`, []);
+    const [ loading, setLoading ] = useState(false);
 
     useEffect(() =>{
         if(infoSidebar.length === 0) {
@@ -26,6 +27,7 @@ const PodcastDetail = () => {
     }, []);
 
     const getApi = () => {
+        setLoading(true);
         apiServices.getPodcastDetail(id)
             .then((details) => {
                 apiServices.getPodcastEpisodes(details.results[0].feedUrl)
@@ -39,16 +41,22 @@ const PodcastDetail = () => {
                         description: channel.description
                     })
                     setCurrentLocation('Details');
+                    setLoading(false);
+
                 })
             })
             .catch( console.error );
     }
 
-    return (
-        <>
-            <Sidebar info={ infoSidebar }/>
-        </>
-    )
+    if(loading) {
+        return null
+    } else {
+        return (
+            <>
+                <Sidebar info={ infoSidebar }/>
+            </>
+        )
+    }
 
 };
 
