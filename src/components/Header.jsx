@@ -1,10 +1,12 @@
 import { useContext } from 'react';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import AppContext from '../context/context';
+
 const Header = () => {
 
     let navigate = useNavigate();
+
     const { currentLocation, setCurrentLocation } = useContext(AppContext);
 
     return (
@@ -14,10 +16,11 @@ const Header = () => {
                 <Title>Podcaster</Title>
             </Link>
         
-                {currentLocation === '' && <LoadingContent>
+            {currentLocation === '' && 
+                <LoadingContent>
                     <Circle></Circle>
-                </LoadingContent>}
-                <p>Ubicación actual: {currentLocation}</p>
+                </LoadingContent>
+            }
         </Container>
 
     );

@@ -1,30 +1,36 @@
 import { useEffect, useState, useContext } from 'react';
 import {  useLocation } from 'react-router-dom';
-import apiServices from '../services/api';
-import Sidebar from '../components/Sidebar';
-import { convertXMLtoJSON } from '../utils/functions';
 import AppContext from '../context/context';
+import apiServices from '../services/api';
+import { convertXMLtoJSON } from '../utils/functions';
+import useLocalStorage from '../hooks/localStorage';
+import Sidebar from '../components/Sidebar';
 
-const PodcasDetail = () => {
+
+const PodcastDetail = () => {
     const location = useLocation();
     const { state } = location;
     const id = state.data.id.attributes['im:id'];
+
     const { setCurrentLocation } = useContext(AppContext);
-    const [ infoSidebar, setInfoSidebar ] = useState([]);
+
+    const [ infoSidebar, setInfoSidebar ] = useLocalStorage(`infoSidebar${id}`, []);
 
     useEffect(() =>{
-        getApi();
+        if(infoSidebar.length === 0) {
+            getApi();
+        }else {
+            setCurrentLocation('Details');
+        }
+       
     }, []);
 
     const getApi = () => {
         apiServices.getPodcastDetail(id)
             .then((details) => {
-                console.log(details)
                 apiServices.getPodcastEpisodes(details.results[0].feedUrl)
                 .then((episodie) => {
-                    console.log(episodie)
                     const obJson = convertXMLtoJSON(episodie);         
-                    console.log(obJson)
                     const { channel } = obJson.rss;
                     setInfoSidebar({
                         image: channel['itunes:image']['@_href'],
@@ -32,13 +38,18 @@ const PodcasDetail = () => {
                         author: channel['itunes:author'],
                         description: channel.description
                     })
-                    setCurrentLocation('Detalle');
-    })
+                    setCurrentLocation('Details');
+                })
             })
             .catch( console.error );
     }
-    return (<><h1>Podcast Detail</h1><Sidebar info={ infoSidebar }/></>)
+
+    return (
+        <>
+            <Sidebar info={ infoSidebar }/>
+        </>
+    )
 
 };
 
-export default PodcasDetail;
+export default PodcastDetail;

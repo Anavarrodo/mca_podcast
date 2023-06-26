@@ -1,21 +1,28 @@
 import { useEffect, useState, useContext } from 'react';
-import apiServices from '../services/api';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import AppContext from '../context/context';
+import apiServices from '../services/api';
 import useLocalStorage from '../hooks/localStorage';
 import Card from '../components/Card';
 import Searcher from '../components/Searcher';
-import AppContext from '../context/context';
-import { useNavigate } from 'react-router-dom';
 
 const PodcastList = () => {
 
-    const [podcastsOriginal, setPodcastsOriginal] = useLocalStorage('podcasts', []);
-    const [podcastsFilter, setPodcastsFilter] = useState([]);
-    const { setCurrentLocation } = useContext(AppContext);
     let navigate = useNavigate();
 
+    const { setCurrentLocation } = useContext(AppContext);
+
+    const [podcastsOriginal, setPodcastsOriginal] = useLocalStorage('podcasts', []);
+    const [podcastsFilter, setPodcastsFilter] = useState([]);
+
     useEffect(() => {
-        if(podcastsOriginal.length === 0) {getApi();}else {setCurrentLocation('Inicio');}
+        if(podcastsOriginal.length === 0) {
+            getApi();
+        }else {
+            setCurrentLocation('List');
+        }
+
         setPodcastsFilter(podcastsOriginal);
     }, []);
 
@@ -24,8 +31,7 @@ const PodcastList = () => {
             .then((podcasts) => {
                 setPodcastsOriginal(podcasts);
                 setPodcastsFilter(podcasts)
-                setCurrentLocation('Inicio');
-
+                setCurrentLocation('List');
             })
             .catch( console.error );
     }

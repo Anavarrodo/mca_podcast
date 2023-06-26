@@ -1,17 +1,28 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 import { deleteHTML } from '../utils/functions';
 import { useNavigate } from 'react-router-dom';
+import AppContext from '../context/context';
 
 const Sidebar = ({ info }) => {
+
     const navigate = useNavigate();
+
+    const { setCurrentLocation } = useContext(AppContext);
+
+    const handleClick = () => {
+        setCurrentLocation('');
+        navigate(-1);
+    } 
+
     return (
         <Box>
             <Image 
                 src={ info.image } 
-                onClick={() => navigate(-1)}
+                onClick={ handleClick }
             />
             <Line/>
-            <Content onClick={() => navigate(-1)}>
+            <Content onClick={ handleClick }>
                 <Title>{ info.title }</Title>
                 <Author>by { info.author  }</Author>
             </Content>
