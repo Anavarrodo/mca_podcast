@@ -1,7 +1,7 @@
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { deleteHTML } from '../utils/functions';
-import { useNavigate } from 'react-router-dom';
 import AppContext from '../context/context';
 
 const Sidebar = ({ info }) => {
@@ -28,7 +28,7 @@ const Sidebar = ({ info }) => {
             </Content>
             <Line/>
             <ContentDescription>
-                <Title>Description:</Title>
+                <Title>Description: </Title>
                 <Description>{ deleteHTML(info.description) }</Description>
             </ContentDescription>
         </Box>
@@ -38,7 +38,7 @@ const Sidebar = ({ info }) => {
 export default Sidebar;
 
 const Box = styled.div`
-    height: auto;
+    height: fit-content;;
     border-bottom: 1px solid #D1D7DC;
     border-right: 1px solid #D1D7DC;
     border-left: 1px solid #D1D7DC;

@@ -1,4 +1,5 @@
 import { XMLParser } from 'fast-xml-parser';
+import moment from 'moment';
 
 export const convertXMLtoJSON = (xmlString) => {
  // Opciones para el parser
@@ -27,4 +28,9 @@ export const deleteHTML = ( html ) => {
     var temporal = document.createElement("div");
     temporal.innerHTML = html;
     return temporal.textContent || temporal.innerText || "";
+};
+
+export const formatDate = (originalDate) => {
+    const formatDate = moment(originalDate).format('DD/MM/YYYY');
+    return formatDate;
 };

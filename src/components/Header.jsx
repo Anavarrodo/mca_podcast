@@ -9,10 +9,17 @@ const Header = () => {
 
     const { currentLocation, setCurrentLocation } = useContext(AppContext);
 
+    const handleClick = () => {
+        if(currentLocation !== '' && currentLocation !== 'List') {
+            navigate('/'); 
+            setCurrentLocation('');
+        }
+    }
+
     return (
 
         <Container>
-            <Link onClick={() => {setCurrentLocation(''); navigate('/')}}>
+            <Link onClick={ handleClick }>
                 <Title>Podcaster</Title>
             </Link>
         
