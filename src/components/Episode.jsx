@@ -1,23 +1,28 @@
 
-import AppContext from '../context/context';
-import {useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { AppContext } from '../context/context';
 import styled from 'styled-components';
-import { deleteHTML } from '../utils/functions';
+
 const Episode = ({ info }) => {
-    const { setCurrentLocation } = useContext(AppContext);
+
+    const { setCurrentLocation } = useContext( AppContext );
+
     useEffect(() => {
-        setCurrentLocation('episodio');
-    },[]);
+        setCurrentLocation( 'episode' );
+    }, [] );
+
     return (
+
         <Container>
-            <Title>{info.title}</Title>
-            <Description>{deleteHTML(info.description)}</Description>
-            <audio controls>
-                <source src={info.enclosure['@_url']} type="audio/mpeg"/>
+            <Title>{ info.title }</Title>
+            <Description dangerouslySetInnerHTML={{ __html: info.description }}></Description>
+            <Reproductor controls>
+                <source src={ info.enclosure['@_url'] } type="audio/mpeg"/>
                 Tu navegador no soporta el elemento de audio.
-            </audio>
+            </Reproductor>
         </Container>
-    )
+
+    );
 };
 
 export default Episode;
@@ -46,4 +51,9 @@ const Description = styled.span`
     font-family: Montserrat-Regular;
     font-style: italic;
     line-height: 18px;
+`;
+
+const Reproductor = styled.audio`
+    width: auto;
+    margin-top: 24px;
 `;

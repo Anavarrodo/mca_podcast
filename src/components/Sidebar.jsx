@@ -1,21 +1,21 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/context';
 import styled from 'styled-components';
-import { deleteHTML } from '../utils/functions';
-import AppContext from '../context/context';
 
 const Sidebar = ({ info }) => {
 
     const navigate = useNavigate();
 
-    const { setCurrentLocation } = useContext(AppContext);
+    const { setCurrentLocation } = useContext( AppContext );
 
     const handleClick = () => {
-        setCurrentLocation('');
-        navigate(-1);
-    } 
+        setCurrentLocation( '' );
+        navigate( -1 );
+    };
 
     return (
+
         <Box>
             <Image 
                 src={ info.image } 
@@ -29,11 +29,11 @@ const Sidebar = ({ info }) => {
             <Line/>
             <ContentDescription>
                 <Title>Description: </Title>
-                <Description>{ deleteHTML(info.description) }</Description>
+                <Description dangerouslySetInnerHTML={{ __html: info.description }}></Description>
             </ContentDescription>
         </Box>
-    )
-}
+    );
+};
 
 export default Sidebar;
 
@@ -81,7 +81,7 @@ const Author = styled.span`
     font-style: italic;
 `;
 
-const ContentDescription = styled(Content)`
+const ContentDescription = styled( Content )`
     cursor: default;
 `;
 

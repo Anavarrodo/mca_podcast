@@ -1,20 +1,20 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/context';
 import styled from 'styled-components';
-import AppContext from '../context/context';
 
 const Header = () => {
 
     let navigate = useNavigate();
 
-    const { currentLocation, setCurrentLocation } = useContext(AppContext);
+    const { currentLocation, setCurrentLocation } = useContext( AppContext );
 
     const handleClick = () => {
-        if(currentLocation !== '' && currentLocation !== 'List') {
-            navigate('/'); 
-            setCurrentLocation('');
-        }
-    }
+        if( currentLocation !== '' && currentLocation !== 'List' ) {
+            navigate( '/' ); 
+            setCurrentLocation( '' );
+        };
+    };
 
     return (
 

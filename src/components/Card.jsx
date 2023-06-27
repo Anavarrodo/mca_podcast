@@ -2,17 +2,18 @@ import styled from 'styled-components';
 
 const Card = ({ data, onClick }) => {
 
-    
-    return (
-        <Box onClick={() => onClick && onClick()}>
+    return ( 
+
+        <Box onClick={ () => onClick && onClick() }>
             <Image src={ data['im:image'][2].label }/>
             <Info>
-                <Name>{data['im:name'].label}</Name>
+                <Name>{ data['im:name'].label }</Name>
                 <Author>Author: { data['im:artist'].label }</Author>
             </Info>
         </Box>
+
     );
-}
+};
 
 export default Card;
 
@@ -56,7 +57,7 @@ const Name = styled.p`
     text-overflow: ellipsis;
 `;
 
-const Author = styled(Name)`
+const Author = styled( Name )`
     font-family: Montserrat-Regular;
     font-size: 15px;
     padding-top: 0px;

@@ -1,43 +1,31 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import {  useLocation } from 'react-router-dom';
+import { AppContext } from '../context/context';
 import styled from 'styled-components';
-import AppContext from '../context/context';
-import apiServices from '../services/api';
-import { convertXMLtoJSON } from '../utils/functions';
-import useLocalStorage from '../hooks/localStorage';
 import Sidebar from '../components/Sidebar';
-import BoxEpisodes from '../components/BoxEpisodes';
 import Episode from '../components/Episode';
 
 
 const PodcastDetail = () => {
+
     const location = useLocation();
     const { state } = location;
-    const {data, item} = state;
+    const { data, item } = state;
 
-    const { currentLocation, setCurrentLocation } = useContext(AppContext);
-
-
-    const [ loading, setLoading ] = useState(false);
+    const { setCurrentLocation } = useContext( AppContext );
 
     useEffect(() =>{
-            setCurrentLocation('Episode');
-    }, []);
+            setCurrentLocation( 'Episode' );
+    }, [] );
 
-   
+    return (
 
-    if(loading) {
-        return null
-    } else {
-        return (
-            <Container>
-                <Sidebar info={ data }/>
-               <Episode info={item}/>
-                
-            </Container>
-        )
-    }
+        <Container>
+            <Sidebar info={ data }/>
+            <Episode info={ item }/>
+        </Container>
 
+    );
 };
 
 export default PodcastDetail;

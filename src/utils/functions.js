@@ -1,7 +1,7 @@
 import { XMLParser } from 'fast-xml-parser';
 import moment from 'moment';
 
-export const convertXMLtoJSON = (xmlString) => {
+export const convertXMLtoJSON = ( xmlString ) => {
  // Opciones para el parser
     let options = {
         attributeNamePrefix: "@_",
@@ -19,41 +19,35 @@ export const convertXMLtoJSON = (xmlString) => {
         arrayMode: false, //"strict"
     };          
 
-    const parser = new XMLParser(options);
-    return parser.parse(xmlString);
-
+    const parser = new XMLParser( options );
+    return parser.parse( xmlString );
 };
 
-export const deleteHTML = ( html ) => {
-    var temporal = document.createElement("div");
-    temporal.innerHTML = html;
-    return temporal.textContent || temporal.innerText || "";
-};
-
-export const formatDate = (originalDate) => {
-    const formatDate = moment(originalDate).format('DD/MM/YYYY');
+export const formatDate = ( originalDate ) => {
+    const formatDate = moment( originalDate ).format( 'DD/MM/YYYY' );
     return formatDate;
 };
 
-export const removeSlashes = (str) => {
-    return str.replace(/\//g, '');
+export const removeSlashes = ( str ) => {
+    return str.replace( /\//g, '' );
 };
 
-export const secondsToMinutes = (seconds) => {
-    if(typeof seconds === 'number'){
-        const hours = Math.floor(seconds / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        const remainingSeconds = seconds % 60;
-    
-        const formattedHours = hours.toString().padStart(2, '0');
-        const formattedMinutes = minutes.toString().padStart(2, '0');
-        const formattedSeconds = remainingSeconds.toString().padStart(2, '0');
-    
-        if (hours > 0) {
-          return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-        } else {
-          return `${formattedMinutes}:${formattedSeconds}`;
-        }}else {
-        return seconds;
-    }
+export const secondsToMinutes = ( seconds ) => {
+    if( typeof seconds === 'number' ){
+      const hours = Math.floor( seconds / 3600 );
+      const minutes = Math.floor( ( seconds % 3600 ) / 60 );
+      const remainingSeconds = seconds % 60;
+
+      const formattedHours = hours.toString().padStart( 2, '0' );
+      const formattedMinutes = minutes.toString().padStart( 2, '0' );
+      const formattedSeconds = remainingSeconds.toString().padStart( 2, '0' );
+
+      if (hours > 0) {
+        return `${ formattedHours }:${ formattedMinutes }:${ formattedSeconds }`;
+      } else {
+        return `${ formattedMinutes }:${ formattedSeconds }`;
+      };
+    }else {
+      return seconds;
+    };
   };

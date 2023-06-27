@@ -1,27 +1,31 @@
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/context';
 import styled from 'styled-components';
 import { formatDate, removeSlashes, secondsToMinutes } from '../utils/functions';
-import AppContext from '../context/context';
-import { useNavigate } from 'react-router-dom';
 
 const BoxEpisodes = ({ info, id }) => {
+
     const { items } = info;
-    const { setCurrentLocation } = useContext(AppContext);
+    const { setCurrentLocation } = useContext( AppContext );
+
     let navigate = useNavigate();
     
-    const handleNavigate = (episodeId, item) => {
-        const epId = removeSlashes(episodeId);
-        setCurrentLocation('');
-        navigate(`/podcast/${id}/episode/${epId}`, {
+    const handleNavigate = ( episodeId, item ) => {
+        const epId = removeSlashes( episodeId );
+        setCurrentLocation( '' );
+        navigate(`/podcast/${ id }/episode/${ epId }`, {
             state: {
                 data: info, 
                 item: item
-            }})
-    }
+            }});
+    };
+
     return (
+
         <SectionEpisodes>
             <BoxTitle>
-                <Title>Episodes: {items?.length}</Title>
+                <Title>Episodes: { items?.length }</Title>
             </BoxTitle>
             <TablaContainer>
                 <thead>
@@ -32,28 +36,29 @@ const BoxEpisodes = ({ info, id }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {items?.length > 0 && items.map((item) => {
+                    {items?.length > 0 && items.map(( item, i ) => {
                         return(
-                        <tr key={item.guid['#text']}>
-                            <Cell>
-                                <NameEpisode onClick={ () => handleNavigate(item.guid['#text'] ?? item.guid, item) }>
-                                    {item.title}
-                                </NameEpisode>
-                            </Cell>
-                            <Cell>{formatDate(item.pubDate)}</Cell>
-                            <Cell>{secondsToMinutes(item['itunes:duration'])}</Cell>
-                        </tr>)}
-                    )}
+                            <tr key={ `${item.guid['#text']}${i}` }>
+                                <Cell >
+                                    <NameEpisode onClick={ () => handleNavigate( item.guid['#text'] ?? item.guid, item ) }>
+                                        { item.title }
+                                    </NameEpisode>
+                                </Cell>
+                                <Cell >{ formatDate( item.pubDate ) }</Cell>
+                                <Cell endposition>{ secondsToMinutes( item['itunes:duration'] ) }</Cell>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </TablaContainer>
         </SectionEpisodes>
-    )
-}
+
+    );
+};
 
 export default BoxEpisodes;
 
 const SectionEpisodes = styled.div`    
-    padding: 10px;
     margin: 68px auto;
     width: 55%;
 `;
@@ -94,6 +99,7 @@ const Cell = styled.td`
     border-bottom:1px solid #D1D7DC;
     font-family: Montserrat-Regular;
     font-size: 14px;
+    ${({ endposition }) => endposition && 'text-align: end;'};
 `;
 
 const NameEpisode = styled.div`

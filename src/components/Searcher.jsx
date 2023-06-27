@@ -1,36 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Searcher = ({ defaultPodcasts, onChange }) => {
+    
+    const [ numberLength, setNumberLength ] = useState();
 
-    const [ numberLength, setNumberLength ] = useState(defaultPodcasts.length);
+    useEffect(() => {
+
+        setNumberLength( defaultPodcasts.length );
+
+    }, [defaultPodcasts.length] );
 
     const filterBySearch = ( searchedWord ) => {
-        const filteredPodcasts = defaultPodcasts.filter((podcast) =>
-            podcast.title.label.toLowerCase().includes(searchedWord) ||
-            podcast['im:artist'].label.toLowerCase().includes(searchedWord)
+        const filteredPodcasts = defaultPodcasts.filter(( podcast ) =>
+            podcast.title.label.toLowerCase().includes( searchedWord ) ||
+            podcast['im:artist'].label.toLowerCase().includes( searchedWord )
         );
     
-        if (filteredPodcasts.length !== 0) {
-            onChange(filteredPodcasts);
-            setNumberLength(filteredPodcasts.length);
+        if ( filteredPodcasts.length !== 0 ) {
+            onChange( filteredPodcasts );
+            setNumberLength( filteredPodcasts.length );
         } else {
-          onChange([]);
-        }
+            setNumberLength(0);
+            onChange( [] );
+        };
       };
 
     return (
+
         <Container>
             <BoxLength>
                 <Number>{ numberLength }</Number>
             </BoxLength>
             <SearchBox
                 placeholder="Filter podcasts"
-                onChange={(e) => filterBySearch(e.target.value.toLowerCase())}
+                onChange={ (e) => filterBySearch( e.target.value.toLowerCase() ) }
             />
         </Container>
-    )
-}
+        
+    );
+};
 
 export default Searcher;
 
