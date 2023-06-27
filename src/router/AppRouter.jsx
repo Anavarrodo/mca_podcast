@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import PodcastList from '../pages/PodcastList';
 import PodcastDetail from '../pages/PodcastDetail';
-import Episode from '../components/Episode';
+import PodcastEpisode from '../pages/PodcastEpisode';
 
 
 const AppRouter = () => {
@@ -10,7 +10,7 @@ const AppRouter = () => {
             <Routes>
                 <Route path='/' element={ <PodcastList /> } />
                 <Route path='/podcast/:id/' element={ <PodcastDetail /> } />
-                <Route path='/podcast/:id/episode/:episodeId' element={ <Episode /> } />
+                <Route path='/podcast/:id/episode/:episodeId' element={ <PodcastEpisode /> } />
             </Routes>
         </>
     );

@@ -1,21 +1,27 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { formatDate } from '../utils/functions';
+import { formatDate, removeSlashes, secondsToMinutes } from '../utils/functions';
 import AppContext from '../context/context';
 import { useNavigate } from 'react-router-dom';
 
 const BoxEpisodes = ({ info, id }) => {
-    
+    const { items } = info;
     const { setCurrentLocation } = useContext(AppContext);
-    let navigate = useNavigate()
-    const handleNavigate = (episodeId) => {
+    let navigate = useNavigate();
+    
+    const handleNavigate = (episodeId, item) => {
+        const epId = removeSlashes(episodeId);
         setCurrentLocation('');
-        navigate(`/podcast/${id}/episode/${episodeId}`)
+        navigate(`/podcast/${id}/episode/${epId}`, {
+            state: {
+                data: info, 
+                item: item
+            }})
     }
     return (
         <SectionEpisodes>
             <BoxTitle>
-                <Title>Episodes: {info?.length}</Title>
+                <Title>Episodes: {items?.length}</Title>
             </BoxTitle>
             <TablaContainer>
                 <thead>
@@ -26,13 +32,15 @@ const BoxEpisodes = ({ info, id }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {info?.length > 0 && info.map((item) => 
+                    {items?.length > 0 && items.map((item) => 
                         <tr key={item.guid['#text']}>
                             <Cell>
-                                <NameEpisode onClick={ () => handleNavigate(item.guid['#text']) }>{item.title}</NameEpisode>
+                                <NameEpisode onClick={ () => handleNavigate(item.guid['#text'], item) }>
+                                    {item.title}
+                                </NameEpisode>
                             </Cell>
                             <Cell>{formatDate(item.pubDate)}</Cell>
-                            <Cell>{item['itunes:duration']}</Cell>
+                            <Cell>{secondsToMinutes(item['itunes:duration'])}</Cell>
                         </tr>
                     )}
                 </tbody>

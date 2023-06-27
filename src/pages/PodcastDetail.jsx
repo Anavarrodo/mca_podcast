@@ -19,13 +19,13 @@ const PodcastDetail = () => {
     const [ infoSidebar, setInfoSidebar ] = useLocalStorage(`infoSidebar${id}`, []);
     const [ loading, setLoading ] = useState(false);
 
+    
     useEffect(() =>{
         if(infoSidebar.length === 0) {
             getApi();
         }else {
             setCurrentLocation('Details');
         }
-       
     }, []);
 
     const getApi = () => {
@@ -58,7 +58,7 @@ const PodcastDetail = () => {
         return (
             <Container>
                 <Sidebar info={ infoSidebar }/>
-                <BoxEpisodes info={ infoSidebar.items } id={id}/>
+                <BoxEpisodes info={ infoSidebar } id={id}/>
             </Container>
         )
     }
