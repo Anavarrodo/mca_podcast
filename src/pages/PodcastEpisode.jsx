@@ -14,8 +14,6 @@ const PodcastDetail = () => {
     const location = useLocation();
     const { state } = location;
     const {data, item} = state;
-    console.log(item)
-    console.log(data)
 
     const { currentLocation, setCurrentLocation } = useContext(AppContext);
 

@@ -8,7 +8,6 @@ const Episode = ({ info }) => {
     useEffect(() => {
         setCurrentLocation('episodio');
     },[]);
-    console.log(info)
     return (
         <Container>
             <Title>{info.title}</Title>

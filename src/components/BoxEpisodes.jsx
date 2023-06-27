@@ -32,16 +32,17 @@ const BoxEpisodes = ({ info, id }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {items?.length > 0 && items.map((item) => 
+                    {items?.length > 0 && items.map((item) => {
+                        return(
                         <tr key={item.guid['#text']}>
                             <Cell>
-                                <NameEpisode onClick={ () => handleNavigate(item.guid['#text'], item) }>
+                                <NameEpisode onClick={ () => handleNavigate(item.guid['#text'] ?? item.guid, item) }>
                                     {item.title}
                                 </NameEpisode>
                             </Cell>
                             <Cell>{formatDate(item.pubDate)}</Cell>
                             <Cell>{secondsToMinutes(item['itunes:duration'])}</Cell>
-                        </tr>
+                        </tr>)}
                     )}
                 </tbody>
             </TablaContainer>
