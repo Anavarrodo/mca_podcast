@@ -35,10 +35,8 @@ const PodcastDetail = () => {
         apiServices.getPodcastDetail( id )
             .then( ( details ) => {
                 apiServices.getPodcastEpisodes( details.results[0].feedUrl )
-                .then( ( episodie ) => {
-                    console.log(episodie)
-                    const obJson = convertXMLtoJSON( episodie );       
-                    console.log(obJson)
+                .then( ( episode ) => {
+                    const obJson = convertXMLtoJSON( episode );
                     const { channel } = obJson.rss;
                     setInfoSidebar({
                         image: channel['itunes:image']['@_href'],

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 const Card = ({ data, onClick }) => {
-
+    console.log(data)
     return ( 
 
-        <Box onClick={ () => onClick && onClick() }>
+        <Box onClick={ () => onClick && onClick() } data-testid='card'>
             <Image src={ data['im:image'][2].label }/>
             <Info>
                 <Name>{ data['im:name'].label }</Name>
