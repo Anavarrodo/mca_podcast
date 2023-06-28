@@ -37,4 +37,10 @@ export const episodeMock = {
     "enclosure": {
         "@_url": "https://traffic.megaphone.fm/GLT2705862274.mp3?updated=1687312901"
     }
-}
+};
+
+export const searcherMock = [
+    {"im:artist": { "label": "Barstool Sports" }, "title": { "label": "Million Dollaz Worth Of Game - Barstool Sports"}},
+    {"im:artist": { "label": "Hrishikesh Hirway" }, "title": { "label": "Song Exploder - Hrishikesh Hirway"}},
+    {"im:artist": { "label": "Rolling Stone | Cumulus Podcast Network" }, "title": { "label": "Rolling Stone Music Now - Rolling Stone | Cumulus Podcast Network"}},
+];
