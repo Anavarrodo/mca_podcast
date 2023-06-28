@@ -4,11 +4,11 @@ import { AppContext } from '../context/context';
 import styled from 'styled-components';
 
 const Episode = ({ info }) => {
-    console.log(info)
+
     const { setCurrentLocation } = useContext( AppContext );
 
     useEffect(() => {
-        setCurrentLocation( 'episode' );
+        setCurrentLocation( 'Episode' );
     }, [] );
 
     return (

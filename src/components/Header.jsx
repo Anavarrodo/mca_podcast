@@ -18,13 +18,13 @@ const Header = () => {
 
     return (
 
-        <Container>
+        <Container data-testid='header'>
             <Link onClick={ handleClick }>
                 <Title>Podcaster</Title>
             </Link>
         
             {currentLocation === '' && 
-                <LoadingContent>
+                <LoadingContent data-testid='loading-content'>
                     <Circle></Circle>
                 </LoadingContent>
             }
