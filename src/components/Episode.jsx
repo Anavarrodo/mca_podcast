@@ -4,7 +4,7 @@ import { AppContext } from '../context/context';
 import styled from 'styled-components';
 
 const Episode = ({ info }) => {
-
+    console.log(info)
     const { setCurrentLocation } = useContext( AppContext );
 
     useEffect(() => {
@@ -13,11 +13,11 @@ const Episode = ({ info }) => {
 
     return (
 
-        <Container>
+        <Container data-testid='episode'>
             <Title>{ info.title }</Title>
             <Description dangerouslySetInnerHTML={{ __html: info.description }}></Description>
             <Reproductor controls>
-                <source src={ info.enclosure['@_url'] } type="audio/mpeg"/>
+                <source src={ info.enclosure['@_url'] } type="audio/mpeg" data-testid="reproductor"/>
                 Tu navegador no soporta el elemento de audio.
             </Reproductor>
         </Container>

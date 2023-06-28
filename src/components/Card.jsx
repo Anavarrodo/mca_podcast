@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Card = ({ data, onClick }) => {
-    console.log(data)
+
     return ( 
 
         <Box onClick={ () => onClick && onClick() } data-testid='card'>
