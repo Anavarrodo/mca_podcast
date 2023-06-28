@@ -23,7 +23,7 @@ const BoxEpisodes = ({ info, id }) => {
 
     return (
 
-        <SectionEpisodes>
+        <SectionEpisodes data-testid='box-episodes'>
             <BoxTitle>
                 <Title>Episodes: { items?.length }</Title>
             </BoxTitle>
