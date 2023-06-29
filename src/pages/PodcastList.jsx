@@ -50,7 +50,7 @@ const PodcastList = () => {
 
     return ( 
 
-        <Container data-testid="podcast-list">
+        <Container data-testid='podcast-list'>
             <BoxSearcher>
                 <Searcher         
                     defaultPodcasts={ podcastsOriginal }

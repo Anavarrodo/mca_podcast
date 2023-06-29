@@ -27,12 +27,12 @@ const Searcher = ({ defaultPodcasts, onChange }) => {
 
     return (
 
-        <Container data-testid="searcher">
+        <Container data-testid='searcher'>
             <BoxLength>
-                <Number data-testid="number-element">{ numberLength }</Number>
+                <Number data-testid='number-element'>{ numberLength }</Number>
             </BoxLength>
             <SearchBox
-                placeholder="Filter podcasts"
+                placeholder='Filter podcasts'
                 onChange={ (e) => filterBySearch( e.target.value.toLowerCase() ) }
             />
         </Container>

@@ -17,14 +17,14 @@ const Sidebar = ({ info }) => {
 
     return (
 
-        <Box data-testid="sidebar">
+        <Box data-testid='sidebar'>
             <Image 
-                data-testid="sidebar-image"
+                data-testid='sidebar-image'
                 src={ info.image } 
                 onClick={ handleClick }
             />
             <Line/>
-            <Content onClick={ handleClick } data-testid="sidebar-content">
+            <Content onClick={ handleClick } data-testid='sidebar-content'>
                 <Title>{ info.title }</Title>
                 <Author>by { info.author  }</Author>
             </Content>

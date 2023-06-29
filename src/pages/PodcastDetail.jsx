@@ -57,11 +57,14 @@ const PodcastDetail = () => {
     };
 
     if( loading ) {
-        return (<Container data-testid="podcast-detail"></Container>)
+        return (
+            <Container data-testid='podcast-detail'>
+            </Container>
+        )
     } else {
         return (
 
-            <Container data-testid="podcast-detail">
+            <Container data-testid='podcast-detail'>
                 <Sidebar info={ infoSidebar }/>
                 <BoxEpisodes info={ infoSidebar } id={ id }/>
             </Container>

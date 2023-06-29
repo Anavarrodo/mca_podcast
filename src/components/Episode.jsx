@@ -17,7 +17,7 @@ const Episode = ({ info }) => {
             <Title>{ info.title }</Title>
             <Description dangerouslySetInnerHTML={{ __html: info.description }}></Description>
             <Reproductor controls>
-                <source src={ info.enclosure['@_url'] } type="audio/mpeg" data-testid="reproductor"/>
+                <source src={ info.enclosure['@_url'] } type='audio/mpeg' data-testid='reproductor'/>
                 Tu navegador no soporta el elemento de audio.
             </Reproductor>
         </Container>
