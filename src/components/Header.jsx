@@ -13,7 +13,7 @@ const Header = () => {
         if( currentLocation !== '' && currentLocation !== 'List' ) {
             navigate( '/' ); 
             setCurrentLocation( '' );
-        };
+        }
     };
 
     return (

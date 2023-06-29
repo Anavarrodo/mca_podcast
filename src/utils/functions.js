@@ -46,8 +46,8 @@ export const secondsToMinutes = ( seconds ) => {
         return `${ formattedHours }:${ formattedMinutes }:${ formattedSeconds }`;
       } else {
         return `${ formattedMinutes }:${ formattedSeconds }`;
-      };
+      }
     }else {
       return seconds;
-    };
+    }
   };

@@ -22,10 +22,10 @@ const PodcastList = () => {
             setCurrentLocation( '' );
         }else {
             setCurrentLocation( 'List' );
-        };
+        }
 
         setPodcastsFilter( podcastsOriginal );
-    }, [] );
+    }, [podcastsOriginal] );
 
     const getApi = () => {
         apiServices.getPodcastList()

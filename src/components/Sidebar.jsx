@@ -4,8 +4,7 @@ import { AppContext } from '../context/context';
 import styled from 'styled-components';
 
 const Sidebar = ({ info }) => {
-
-    
+ 
     const navigate = useNavigate();
 
     const { setCurrentLocation } = useContext( AppContext );

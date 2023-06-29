@@ -16,16 +16,16 @@ const useLocalStorage = ( keyName, defaultValue ) => {
         // La información ha expirado
         localStorage.clear();
         location.reload();
-      };
+      }
       if ( value ) {
         return JSON.parse( value );
       } else {
         localStorage.setItem( keyName, JSON.stringify( defaultValue ) );
         return defaultValue;
-      };
+      }
     } catch ( err ) {
       return defaultValue;
-    };
+    }
 
   });
 
@@ -33,7 +33,7 @@ const useLocalStorage = ( keyName, defaultValue ) => {
     try {
       localStorage.setItem( keyName, JSON.stringify( newValue ) );
       localStorage.setItem( 'expirationTime', expirationTime );
-    } catch ( err ) {};
+    } catch ( err ) {}
     setStoredValue( newValue) ;
   };
 

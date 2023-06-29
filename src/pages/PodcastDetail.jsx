@@ -27,7 +27,7 @@ const PodcastDetail = () => {
             getApi();
         }else {
             setCurrentLocation( 'Details' );
-        };
+        }
     }, [] );
 
     const getApi = () => {
@@ -70,8 +70,7 @@ const PodcastDetail = () => {
             </Container>
 
         );
-    };
-
+    }
 };
 
 export default PodcastDetail;
