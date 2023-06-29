@@ -7,9 +7,9 @@ import { episodeMock } from '../components/__mocks__';
 
 const setCurrentLocation = jest.fn();
 
-describe('PodcastEpisode', () => {
+describe( 'PodcastEpisode', () => {
 
-    test('renders without error', () => {
+    test( 'renders without error', () => {
 
         const { getByTestId } = render (
           <MemoryRouter 
@@ -25,6 +25,6 @@ describe('PodcastEpisode', () => {
             </AppContext.Provider>
           </MemoryRouter> 
         );
-        expect(getByTestId('podcast-episode')).toBeInTheDocument();
+        expect( getByTestId( 'podcast-episode' ) ).toBeInTheDocument();
     });
 });

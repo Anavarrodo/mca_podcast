@@ -12,17 +12,17 @@ describe( 'test by <Card /> ', () => {
             />
         );
 
-        expect( getByTestId('card').innerHTML ).toBeTruthy();
+        expect( getByTestId( 'card' ).innerHTML ).toBeTruthy();
     });
 
     test( 'use data props correctly', () => {
        const { getByText } = render (
         <Card 
-            data={cardMock} 
+            data={ cardMock } 
         />);
 
-        expect( getByText('Tay To Z: A Taylor Swift Podcast') ).toBeInTheDocument();
-        expect( getByText('Author: Devin and Gab') ).toBeInTheDocument();
+        expect( getByText( 'Tay To Z: A Taylor Swift Podcast' ) ).toBeInTheDocument();
+        expect( getByText( 'Author: Devin and Gab' ) ).toBeInTheDocument();
     });
 
     it( 'calls onClick when the component is clicked', () => {
@@ -33,7 +33,7 @@ describe( 'test by <Card /> ', () => {
                 onClick={ mockOnClick } 
             />);
             
-        fireEvent.click(getByTestId('card'));
+        fireEvent.click( getByTestId( 'card' ) );
 
         expect( mockOnClick ).toHaveBeenCalledTimes(1);
     });

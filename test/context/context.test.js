@@ -12,15 +12,15 @@ describe( 'test by Context ', () => {
             </ContextProvider>
           ); 
 
-          expect(getByText('Children')).toBeInTheDocument();
+          expect( getByText( 'Children' ) ).toBeInTheDocument();
     });
 
     test( 'should provide context values', () => {
         let contextValue;
 
         // Render the ContextProvider component and access the context value using act
-        act(() => {
-          render(
+        act( () => {
+          render (
             <ContextProvider>
               <AppContext.Consumer>
                 {value => {
@@ -33,7 +33,7 @@ describe( 'test by Context ', () => {
         });
     
         // Verify the context values
-        expect(contextValue.currentLocation).toEqual('');
-        expect(typeof contextValue.setCurrentLocation).toBe('function');
+        expect( contextValue.currentLocation ).toEqual( '' );
+        expect( typeof contextValue.setCurrentLocation ).toBe( 'function' );
     });
 });

@@ -30,7 +30,7 @@ describe( 'test by <Header /> ', () => {
             </Router>
         );
 
-        expect( getByTestId('header').innerHTML ).toBeTruthy();
+        expect( getByTestId( 'header' ).innerHTML ).toBeTruthy();
     });
 
     test( 'calls setCurrentLocation and navigate when Link is clicked', () => {
@@ -41,10 +41,10 @@ describe( 'test by <Header /> ', () => {
             </AppContext.Provider>
         );
 
-        fireEvent.click(getByText('Podcaster'));
+        fireEvent.click(getByText( 'Podcaster' ));
 
-        expect( setCurrentLocation ).toHaveBeenCalledWith('');
-        expect( mockNavigate ).toHaveBeenCalledWith('/');
+        expect( setCurrentLocation ).toHaveBeenCalledWith( '' );
+        expect( mockNavigate ).toHaveBeenCalledWith( '/' );
     });
 
     test(`don't show LoadingContent when currentLocation`, () => {
@@ -53,7 +53,7 @@ describe( 'test by <Header /> ', () => {
                 <Header />
             </AppContext.Provider>
         );
-        expect( queryByTestId('loading-content')).toBeNull();
+        expect( queryByTestId( 'loading-content' ) ).toBeNull();
     });
 
     test( 'renders LoadingContent when currentLocation is empty', () => {
@@ -62,6 +62,6 @@ describe( 'test by <Header /> ', () => {
                 <Header />
             </AppContext.Provider>
         );
-        expect( getByTestId('loading-content')).toBeInTheDocument();
+        expect( getByTestId( 'loading-content' ) ).toBeInTheDocument();
     });
 });

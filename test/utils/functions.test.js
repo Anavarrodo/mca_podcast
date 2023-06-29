@@ -31,6 +31,6 @@ describe( 'test in the utils folder', () => {
       const input = 4442;
       const output = secondsToMinutes( input );
 
-      expect( output ).toEqual('01:14:02');
+      expect( output ).toEqual( '01:14:02' );
     });
 });

@@ -6,9 +6,9 @@ import { AppContext } from '../../src/context/context';
 
 const setCurrentLocation = jest.fn();
 
-describe('PodcastList', () => {
+describe( 'PodcastList', () => {
 
-    test('renders without error', () => {
+    test( 'renders without error', () => {
 
         const { getByTestId } = render (
             <Router>
@@ -17,6 +17,6 @@ describe('PodcastList', () => {
                 </AppContext.Provider>
             </Router>    
         );
-        expect(getByTestId('podcast-list')).toBeInTheDocument();
+        expect( getByTestId( 'podcast-list' ) ).toBeInTheDocument();
     });
 });

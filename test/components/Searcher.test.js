@@ -9,38 +9,38 @@ describe( 'test by <Searcher /> ', () => {
 
         const { getByTestId } = render (  
             <Searcher 
-                defaultPodcasts={Array(100)} 
-                onChange={() => {}} 
+                defaultPodcasts={ Array(100) } 
+                onChange={ () => {} } 
             />
         );
 
-        expect( getByTestId('searcher').innerHTML ).toBeTruthy();
+        expect( getByTestId( 'searcher' ).innerHTML ).toBeTruthy();
     });
 
     test( 'display of the number of results', () => {
         const { getByTestId } = render (
             <Searcher 
-                defaultPodcasts={Array(58)} 
-                onChange={() => {}} 
+                defaultPodcasts={ Array(58) } 
+                onChange={ () => {} } 
             />);
 
-        expect( getByTestId('number-element')).toHaveTextContent (58);
+        expect( getByTestId( 'number-element' ) ).toHaveTextContent( 58 );
     });
 
     test('search', () => {
         const onChangeMock = jest.fn();
         const { getByPlaceholderText } = render (
             <Searcher 
-                defaultPodcasts={searcherMock} 
-                onChange={onChangeMock} 
+                defaultPodcasts={ searcherMock } 
+                onChange={ onChangeMock } 
             />
         );
 
-        fireEvent.change( getByPlaceholderText('Filter podcasts'), { target: { value: 'Rolling Sto' } });
+        fireEvent.change( getByPlaceholderText( 'Filter podcasts' ), { target: { value: 'Rolling Sto' } });
       
         expect( onChangeMock ).toHaveBeenCalledTimes(1);
         expect( onChangeMock).toHaveBeenCalledWith([
-            {"im:artist": { "label": "Rolling Stone | Cumulus Podcast Network" }, "title": { "label": "Rolling Stone Music Now - Rolling Stone | Cumulus Podcast Network"}},
+            {"im:artist": { label: "Rolling Stone | Cumulus Podcast Network" }, title: { label: "Rolling Stone Music Now - Rolling Stone | Cumulus Podcast Network"}},
         ]);
       });
 });

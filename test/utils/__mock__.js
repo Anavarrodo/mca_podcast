@@ -24,11 +24,11 @@ Learn more about your ad choices. Visit megaphone.fm/adchoices</itunes:summary>
 `;
 
 export const jsonMock = {
-  "item": {
-      "title":  "1: Yung Miami & Diddy Talk Their Relationship Status, Dating, Love Records & More | Caresha Please",
-      "link": "https://audioboom.com/posts/8099567",
-      "description": "In this special sneak preview of new series Caresha Please, host Yung Miami welcomes the one and only Sean \"Diddy\" Combs for an intimate chat about fatherhood, his new R&B label Love Records, the story behind “Rap Freaks,” the truth about their relationship, toxicity, and more.\nLearn more about your ad choices. Visit megaphone.fm/adchoices",        
-      "pubDate": "Thu, 09 Jun 2022 21:00:00 -0000",
+  item: {
+      title:  "1: Yung Miami & Diddy Talk Their Relationship Status, Dating, Love Records & More | Caresha Please",
+      link: "https://audioboom.com/posts/8099567",
+      description: "In this special sneak preview of new series Caresha Please, host Yung Miami welcomes the one and only Sean \"Diddy\" Combs for an intimate chat about fatherhood, his new R&B label Love Records, the story behind “Rap Freaks,” the truth about their relationship, toxicity, and more.\nLearn more about your ad choices. Visit megaphone.fm/adchoices",        
+      pubDate: "Thu, 09 Jun 2022 21:00:00 -0000",
       "itunes:title": "Yung Miami & Diddy Talk Their Relationship Status, Dating, Love Records & More | Caresha Please",
       "itunes:episodeType": "full",
       "itunes:episode": 1,
@@ -41,11 +41,11 @@ export const jsonMock = {
       "content:encoded": "In this special sneak preview of new series Caresha Please, host Yung Miami welcomes the one and only Sean \"Diddy\" Combs for an intimate chat about fatherhood, his new R&B label Love Records, the story behind “Rap Freaks,” the truth about their relationship, toxicity, and more.\n<p> </p><p>Learn more about your ad choices. Visit <a href=\"https://megaphone.fm/adchoices\">megaphone.fm/adchoices</a></p>",
       "itunes:duration": 2439,
       "itunes:explicit": "yes",
-      "guid": {
+      guid: {
         "@_isPermaLink": "false",
           "#text": "tag:audioboom.com,2022-06-09:/posts/8099567"
       },
-      "enclosure": {
+      enclosure: {
           "@_length": "0",
           "@_type": "audio/mpeg",
           "@_url": "https://traffic.megaphone.fm/RMTV8654140269.mp3?updated=1681169257"

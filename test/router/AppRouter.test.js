@@ -8,16 +8,16 @@ const setCurrentLocation = jest.fn();
 
 describe( 'test by <AppRouter /> ', () => {
 
-    test('route / renders PodcastList', () => {
+    test( 'route / renders PodcastList', () => {
 
         const { getByTestId } = render (
-            <MemoryRouter initialEntries={['/']}>
+            <MemoryRouter initialEntries={[ '/' ]}>
                 <AppContext.Provider value={{ setCurrentLocation }}>
                     <AppRouter />
                 </AppContext.Provider>
             </MemoryRouter>
         );
       
-        expect( getByTestId('podcast-list') ).toBeInTheDocument();
+        expect( getByTestId( 'podcast-list' ) ).toBeInTheDocument();
       });
 });

@@ -4,7 +4,7 @@ import App from '../src/App';
 
 describe(' test in <App />', () => {
     
-    test('renders App component', () => {
+    test( 'renders App component', () => {
         render (
             <Router>
                 <App />

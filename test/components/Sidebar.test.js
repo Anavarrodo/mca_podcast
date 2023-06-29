@@ -26,26 +26,26 @@ describe( 'test by <Sidebar /> ', () => {
             </Router>
         );
 
-        expect( getByTestId('sidebar').innerHTML ).toBeTruthy();
+        expect( getByTestId( 'sidebar' ).innerHTML ).toBeTruthy();
     });
 
-    test ('calls setCurrentLocation and navigate when image-content is clicked', () => {
+    test ( 'calls setCurrentLocation and navigate when image-content is clicked', () => {
         const { getByTestId } = render (
           <Router>
             <AppContext.Provider value={{ setCurrentLocation }}>
               <Sidebar 
-                info={sidebarMock} 
+                info={ sidebarMock } 
               />
             </AppContext.Provider>
           </Router>,
         );
       
-        fireEvent.click(getByTestId('sidebar-image'));
-        expect(setCurrentLocation).toHaveBeenCalledWith('');
-        expect(mockNavigate).toHaveBeenCalledWith(-1);
+        fireEvent.click(getByTestId( 'sidebar-image' ));
+        expect( setCurrentLocation ).toHaveBeenCalledWith( '' );
+        expect( mockNavigate ).toHaveBeenCalledWith( -1 );
 
-        fireEvent.click(getByTestId('sidebar-content'));
-        expect(setCurrentLocation).toHaveBeenCalledWith('');
-        expect(mockNavigate).toHaveBeenCalledWith(-1);
+        fireEvent.click(getByTestId( 'sidebar-content' ));
+        expect( setCurrentLocation ).toHaveBeenCalledWith( '' );
+        expect( mockNavigate ).toHaveBeenCalledWith( -1 );
       });
 });
