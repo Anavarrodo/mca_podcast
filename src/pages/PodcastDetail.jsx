@@ -61,7 +61,7 @@ const PodcastDetail = () => {
     } else {
         return (
 
-            <Container>
+            <Container data-testid="podcast-detail">
                 <Sidebar info={ infoSidebar }/>
                 <BoxEpisodes info={ infoSidebar } id={ id }/>
             </Container>

@@ -1,6 +1,6 @@
 const { render, act  } = require('@testing-library/react');
 import '@testing-library/jest-dom/extend-expect';
-import { AppContext, ContextProvider } from '../src/context/context';
+import { AppContext, ContextProvider } from '../../src/context/context';
 
 describe( 'test by Context ', () => {
 
