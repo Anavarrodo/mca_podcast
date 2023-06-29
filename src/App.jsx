@@ -10,8 +10,8 @@ function App () {
 
     <ContextProvider >
       <StyleSheetManager shouldForwardProp={shouldForwardProp}>
-      <Header/>
-      <AppRouter/>
+        <Header/>
+        <AppRouter/>
       </StyleSheetManager>
     </ContextProvider>
 
