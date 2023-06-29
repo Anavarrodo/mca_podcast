@@ -12,14 +12,16 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockNavigate,
 }));
 
-describe('test by <Sidebar /> ', () => {
+describe( 'test by <Sidebar /> ', () => {
 
-    test('renders without error', () => {
+    test( 'renders without error', () => {
 
-        const { getByTestId } = render(  
+        const { getByTestId } = render (  
             <Router>
                 <AppContext.Provider value={{ setCurrentLocation }}>
-                    <Sidebar info={sidebarMock} />  
+                    <Sidebar 
+                      info={ sidebarMock }  
+                    />  
                 </AppContext.Provider>
             </Router>
         );
@@ -27,11 +29,13 @@ describe('test by <Sidebar /> ', () => {
         expect( getByTestId('sidebar').innerHTML ).toBeTruthy();
     });
 
-    test('calls setCurrentLocation and navigate when image-content  is clicked', () => {
-        const { getByTestId } = render(
+    test ('calls setCurrentLocation and navigate when image-content is clicked', () => {
+        const { getByTestId } = render (
           <Router>
             <AppContext.Provider value={{ setCurrentLocation }}>
-              <Sidebar info={sidebarMock} />
+              <Sidebar 
+                info={sidebarMock} 
+              />
             </AppContext.Provider>
           </Router>,
         );

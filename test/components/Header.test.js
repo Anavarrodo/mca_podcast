@@ -18,11 +18,11 @@ const renderWithRouter = (ui, { route = '/' } = {}) => {
     return render(ui, { wrapper: MemoryRouter })
 }
 
-describe('test by <Header /> ', () => {
+describe( 'test by <Header /> ', () => {
 
-    test('renders without error', () => {
+    test( 'renders without error', () => {
 
-        const { getByTestId } = render(  
+        const { getByTestId } = render (  
             <Router>
                 <AppContext.Provider value={{ setCurrentLocation }}>
                     <Header  />
@@ -33,9 +33,9 @@ describe('test by <Header /> ', () => {
         expect( getByTestId('header').innerHTML ).toBeTruthy();
     });
 
-    test('calls setCurrentLocation and navigate when Link is clicked', () => {
+    test( 'calls setCurrentLocation and navigate when Link is clicked', () => {
 
-        const { getByText } = renderWithRouter(
+        const { getByText } = renderWithRouter (
             <AppContext.Provider value={{ currentLocation: 'Details', setCurrentLocation }}>
                 <Header />
             </AppContext.Provider>
@@ -43,25 +43,25 @@ describe('test by <Header /> ', () => {
 
         fireEvent.click(getByText('Podcaster'));
 
-        expect(setCurrentLocation).toHaveBeenCalledWith('');
-        expect(mockNavigate).toHaveBeenCalledWith('/');
+        expect( setCurrentLocation ).toHaveBeenCalledWith('');
+        expect( mockNavigate ).toHaveBeenCalledWith('/');
     });
 
     test(`don't show LoadingContent when currentLocation`, () => {
-        const { queryByTestId } = renderWithRouter(
+        const { queryByTestId } = renderWithRouter (
             <AppContext.Provider value={{ currentLocation: 'Details', setCurrentLocation }}>
                 <Header />
             </AppContext.Provider>
         );
-        expect(queryByTestId('loading-content')).toBeNull();
+        expect( queryByTestId('loading-content')).toBeNull();
     });
 
-    test('renders LoadingContent when currentLocation is empty', () => {
-        const { getByTestId } = renderWithRouter(
+    test( 'renders LoadingContent when currentLocation is empty', () => {
+        const { getByTestId } = renderWithRouter (
             <AppContext.Provider value={{ currentLocation: '', setCurrentLocation }}>
                 <Header />
             </AppContext.Provider>
         );
-        expect(getByTestId('loading-content')).toBeInTheDocument();
+        expect( getByTestId('loading-content')).toBeInTheDocument();
     });
 });

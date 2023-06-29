@@ -8,14 +8,14 @@ import { boxEpisodesMock } from './__mocks__';
 const id='1535809341';
 const setCurrentLocation = jest.fn();
 const mockNavigate = jest.fn();
-jest.mock('react-router-dom', () => ({
-    ...jest.requireActual('react-router-dom'),
+jest.mock( 'react-router-dom' , () => ({
+    ...jest.requireActual( 'react-router-dom' ),
     useNavigate: () => mockNavigate,
 }));
 
-describe('test by <BoxEpisodes /> ', () => {
+describe( 'test by <BoxEpisodes /> ' , () => {
     
-    test('renders without error', () => {
+    test( 'renders without error' , () => {
 
         const { getByTestId } = render(  
             <Router>
@@ -25,24 +25,24 @@ describe('test by <BoxEpisodes /> ', () => {
             </Router>
         );
 
-        expect( getByTestId('box-episodes').innerHTML ).toBeTruthy();
+        expect( getByTestId( 'box-episodes' ).innerHTML ).toBeTruthy();
 
     });
 
-    test('handles episode clicks correctly', () => {
+    test( 'handles episode clicks correctly' , () => {
       
-        render(
-          <AppContext.Provider value={{ setCurrentLocation }}>
-            <BoxEpisodes 
-                info={boxEpisodesMock } 
-                id={id} 
-            />
-          </AppContext.Provider>
+        render (
+            <AppContext.Provider value={{ setCurrentLocation }}>
+                <BoxEpisodes 
+                    info={ boxEpisodesMock } 
+                    id={ id }  
+                />
+            </AppContext.Provider>
         );
       
-        fireEvent.click(screen.getByText("'The Show' | Every Single Album: Niall Horan"));
+        fireEvent.click( screen.getByText( "'The Show' | Every Single Album: Niall Horan"));
       
-        expect(mockNavigate).toHaveBeenCalledWith('/podcast/1535809341/episode/011541a0-11e8-11ee-afbc-1b6aa7ef28c2', {
+        expect( mockNavigate ).toHaveBeenCalledWith( '/podcast/1535809341/episode/011541a0-11e8-11ee-afbc-1b6aa7ef28c2', {
           state: {
             data: boxEpisodesMock,
             item: boxEpisodesMock.items[0]
@@ -50,15 +50,17 @@ describe('test by <BoxEpisodes /> ', () => {
         });
     });
 
-    test('shows the correct number of episodes', () => {
+    test( 'shows the correct number of episodes' , () => {
 
-        render( 
+        const { getByText } = render ( 
             <AppContext.Provider value={{ setCurrentLocation }}>
-                <BoxEpisodes info={ boxEpisodesMock } id='1628914491' />
+                <BoxEpisodes 
+                    info={ boxEpisodesMock } 
+                    id='1628914491' 
+                />
             </AppContext.Provider>
         );
 
-        const titleElement = screen.getByText(/Episodes: 2/i);
-        expect(titleElement).toBeInTheDocument();
+        expect( getByText(/Episodes: 2/i) ).toBeInTheDocument();
       });
 });
