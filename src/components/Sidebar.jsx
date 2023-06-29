@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 const Sidebar = ({ info }) => {
 
+    
     const navigate = useNavigate();
 
     const { setCurrentLocation } = useContext( AppContext );
@@ -16,13 +17,14 @@ const Sidebar = ({ info }) => {
 
     return (
 
-        <Box>
+        <Box data-testid="sidebar">
             <Image 
+                data-testid="sidebar-image"
                 src={ info.image } 
                 onClick={ handleClick }
             />
             <Line/>
-            <Content onClick={ handleClick }>
+            <Content onClick={ handleClick } data-testid="sidebar-content">
                 <Title>{ info.title }</Title>
                 <Author>by { info.author  }</Author>
             </Content>

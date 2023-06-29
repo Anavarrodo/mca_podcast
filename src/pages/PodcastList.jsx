@@ -19,6 +19,7 @@ const PodcastList = () => {
     useEffect(() => {
         if( podcastsOriginal.length === 0 ) {
             getApi();
+            setCurrentLocation( '' );
         }else {
             setCurrentLocation( 'List' );
         };

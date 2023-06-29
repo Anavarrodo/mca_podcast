@@ -44,3 +44,10 @@ export const searcherMock = [
     {"im:artist": { "label": "Hrishikesh Hirway" }, "title": { "label": "Song Exploder - Hrishikesh Hirway"}},
     {"im:artist": { "label": "Rolling Stone | Cumulus Podcast Network" }, "title": { "label": "Rolling Stone Music Now - Rolling Stone | Cumulus Podcast Network"}},
 ];
+
+export const sidebarMock = {
+    "author": "Andrew Hickey",
+    "description": "Andrew Hickey presents a history of rock music from 1938 to 1999, looking at five hundred songs that shaped the genre.",
+    "image": "https://500songs.com/wp-content/uploads/2021/04/Logo.png",
+    "title": "A History of Rock Music in 500 Songs"
+}

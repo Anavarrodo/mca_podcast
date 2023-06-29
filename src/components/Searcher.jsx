@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Searcher = ({ defaultPodcasts, onChange }) => {
-    console.log(typeof defaultPodcasts.length);
     const [ numberLength, setNumberLength ] = useState();
 
     useEffect(() => {
