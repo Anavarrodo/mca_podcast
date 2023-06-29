@@ -32,6 +32,7 @@ export const cardMock = {
 };
 
 export const episodeMock = {
+    "id": { "attributes": { 'im:id': '1311004083' } },
     "title": "Can \"Cruel Summer\" Still Be the Song of the Summer? | Every Single Album: Taylor Swift",
     "description": "Nora and Nathan talk about the news that \"Cruel Summer,\" from Taylor Swift's 2019 album, 'Lover,' was released this week as a single. They talk about whether the move could bump the song to the top of the charts (1:00) and why she might have decided to make \"ME!\" the first single off of 'Lover' instead (18:20).\n\nHosts: Nora Princiotti and Nathan Hubbard\nProducer: Kaya McMullen\nLearn more about your ad choices. Visit podcastchoices.com/adchoices",
     "enclosure": {

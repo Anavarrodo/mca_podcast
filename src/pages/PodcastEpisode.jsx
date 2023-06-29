@@ -20,7 +20,7 @@ const PodcastDetail = () => {
 
     return (
 
-        <Container>
+        <Container data-testid="podcast-episode">
             <Sidebar info={ data }/>
             <Episode info={ item }/>
         </Container>

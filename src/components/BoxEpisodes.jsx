@@ -45,7 +45,7 @@ const BoxEpisodes = ({ info, id }) => {
                                     </NameEpisode>
                                 </Cell>
                                 <Cell >{ formatDate( item.pubDate ) }</Cell>
-                                <Cell endposition>{ secondsToMinutes( item['itunes:duration'] ) }</Cell>
+                                <Cell endposition={ true.toString() }>{ secondsToMinutes( item['itunes:duration'] ) }</Cell>
                             </tr>
                         )
                     })}

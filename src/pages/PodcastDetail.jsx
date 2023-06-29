@@ -57,7 +57,7 @@ const PodcastDetail = () => {
     };
 
     if( loading ) {
-        return null
+        return (<Container data-testid="podcast-detail"></Container>)
     } else {
         return (
 
