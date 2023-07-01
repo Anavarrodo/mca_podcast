@@ -113,5 +113,5 @@ const Cell = styled.td`
 
 const NameEpisode = styled.div`
   cursor: pointer;
-  color: blue;
+  color:  #5e97f6;;
 `;

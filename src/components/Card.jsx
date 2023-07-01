@@ -33,7 +33,7 @@ const Image = styled.img`
   position: absolute;
   top: 0%;
   left: 50%;
-  width: 50%;
+  width: 40%;
   transform: translate(-50%, -50%);
   z-index: -1;
 `;
