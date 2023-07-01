@@ -22,7 +22,7 @@ const Searcher = ({ defaultPodcasts, onChange }) => {
         } else {
             setNumberLength(0);
             onChange( [] );
-        };
+        }
       };
 
     return (

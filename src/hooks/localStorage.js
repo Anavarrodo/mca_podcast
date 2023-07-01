@@ -33,7 +33,7 @@ const useLocalStorage = ( keyName, defaultValue ) => {
     try {
       localStorage.setItem( keyName, JSON.stringify( newValue ) );
       localStorage.setItem( 'expirationTime', expirationTime );
-    } catch ( err ) {}
+    } catch ( err ) { console.error }
     setStoredValue( newValue) ;
   };
 

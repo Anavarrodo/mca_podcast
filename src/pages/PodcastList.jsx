@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext, useCallback  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/context';
 import apiServices from '../services/api';
@@ -15,9 +15,23 @@ const PodcastList = () => {
 
     const [ podcastsOriginal, setPodcastsOriginal ] = useLocalStorage( 'podcasts', [] );
     const [ podcastsFilter, setPodcastsFilter ] = useState( [] );
+    const [ loading, setLoading ] = useState(false);
+
+    const getApi = useCallback(() => {
+        apiServices.getPodcastList()
+            .then( ( podcasts ) => {
+                setPodcastsOriginal( podcasts );
+                setPodcastsFilter( podcasts );
+                setCurrentLocation( 'List' );
+            })
+            .catch((error) => {
+                console.error(error);
+                setLoading(true);
+            });
+    }, [setCurrentLocation, setPodcastsOriginal]);
 
     useEffect(() => {
-        if( podcastsOriginal.length === 0 ) {
+        if( podcastsOriginal.length === 0 && !loading ) {
             getApi();
             setCurrentLocation( '' );
         }else {
@@ -25,17 +39,7 @@ const PodcastList = () => {
         }
 
         setPodcastsFilter( podcastsOriginal );
-    }, [podcastsOriginal] );
-
-    const getApi = () => {
-        apiServices.getPodcastList()
-            .then( ( podcasts ) => {
-                setPodcastsOriginal( podcasts );
-                setPodcastsFilter( podcasts );
-                setCurrentLocation( 'List' );
-            })
-            .catch( console.error );
-    };
+    }, [podcastsOriginal, getApi, setCurrentLocation, loading] );
 
     const getFilterPodcats = ( search ) => {
         setPodcastsFilter( search );

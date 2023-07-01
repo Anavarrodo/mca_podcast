@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/context';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const Header = () => {
 
@@ -61,9 +61,22 @@ const LoadingContent = styled.div`
     align-items: center;
 `;
 
+const expandAndContract = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
 const Circle = styled.div`
     background: #5E97F6;
     border-radius: 50%;
     width: 25px;
     height: 25px;
+    animation: ${expandAndContract} 0.5s infinite alternate;
 `;

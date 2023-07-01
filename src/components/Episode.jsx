@@ -8,8 +8,8 @@ const Episode = ({ info }) => {
     const { setCurrentLocation } = useContext( AppContext );
 
     useEffect(() => {
-        setCurrentLocation( 'Episode' );
-    }, [] );
+        setCurrentLocation('Episode');
+    }, [setCurrentLocation]);
 
     return (
 

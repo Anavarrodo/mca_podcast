@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext, useCallback } from 'react';
 import {  useLocation } from 'react-router-dom';
 import { AppContext } from '../context/context';
 import apiServices from '../services/api';
@@ -18,45 +18,45 @@ const PodcastDetail = () => {
     const { setCurrentLocation } = useContext( AppContext );
 
     const [ infoSidebar, setInfoSidebar ] = useLocalStorage( `infoSidebar${id}`, [] );
-    const [ loading, setLoading ] = useState( false );
+    const [loading, setLoading] = useState(false);
 
+    const getApi = useCallback(() => {
+        apiServices.getPodcastDetail(id)
+            .then((details) => {
+                apiServices.getPodcastEpisodes(details.results[0].feedUrl)
+                    .then((episode) => {
+                        const obJson = convertXMLtoJSON(episode);
+                        const { channel } = obJson.rss;
+                        setInfoSidebar({
+                            image: channel['itunes:image']['@_href'],
+                            title: channel.title,
+                            author: channel['itunes:author'],
+                            description: channel.description,
+                            items: channel.item
+                        })
+                        setCurrentLocation('Details');
+                    }).catch((e) => {
+                        setCurrentLocation('Details');
+                        console.error(e);
+                        setLoading(true);
+                    });
+            })
+            .catch((error) => {
+                console.error(error);
+                setLoading(true);
+            });
+    }, [id, setCurrentLocation, setInfoSidebar]);
     
     useEffect(() => {
-        if( infoSidebar.length === 0 ) {
-            setCurrentLocation( '' );
+        if (infoSidebar.length === 0 && !loading) {
             getApi();
-        }else {
-            setCurrentLocation( 'Details' );
+            setCurrentLocation('');
+        } else {
+            setCurrentLocation('Details');
         }
-    }, [] );
+    }, [getApi, infoSidebar.length, setCurrentLocation, loading]);
 
-    const getApi = () => {
-        setLoading(true);
-        apiServices.getPodcastDetail( id )
-            .then( ( details ) => {
-                apiServices.getPodcastEpisodes( details.results[0].feedUrl )
-                .then( ( episode ) => {
-                    const obJson = convertXMLtoJSON( episode );
-                    const { channel } = obJson.rss;
-                    setInfoSidebar({
-                        image: channel['itunes:image']['@_href'],
-                        title: channel.title,
-                        author: channel['itunes:author'],
-                        description: channel.description,
-                        items: channel.item
-                    })
-                    setCurrentLocation( 'Details' );
-                    setLoading( false );
-
-                }).catch( ( e ) => {
-                    setCurrentLocation( 'Details' );
-                    console.error( e )
-                  });
-            })
-            .catch( console.error );
-    };
-
-    if( loading ) {
+    if( loading || infoSidebar.length === 0 ) {
         return (
             <Container data-testid='podcast-detail'>
             </Container>
