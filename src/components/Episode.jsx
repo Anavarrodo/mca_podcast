@@ -30,13 +30,13 @@ export default Episode;
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    margin: 68px auto;
+    width: 55%;
     border-bottom: 1px solid #D1D7DC;
     border-right: 1px solid #D1D7DC;
     border-left: 1px solid #D1D7DC;
     box-shadow: 0 4px 2px -2px #D1D7DC;
     padding: 10px;
-    margin: 68px 10px;
     height: fit-content;
 `;
 
