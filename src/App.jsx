@@ -1,20 +1,18 @@
-import AppRouter from './router/AppRouter';
-import { ContextProvider } from './context/context';
-import Header from './components/Header';
-import { StyleSheetManager } from 'styled-components';
-import isPropValid from '@emotion/is-prop-valid';
+import AppRouter from "./router/AppRouter";
+import { ContextProvider } from "./context/context";
+import Header from "./components/Header";
+import { StyleSheetManager } from "styled-components";
+import isPropValid from "@emotion/is-prop-valid";
 
-function App () {
+function App() {
   const shouldForwardProp = (prop) => isPropValid(prop);
-  return ( 
-
-    <ContextProvider >
+  return (
+    <ContextProvider>
       <StyleSheetManager shouldForwardProp={shouldForwardProp}>
-        <Header/>
-        <AppRouter/>
+        <Header />
+        <AppRouter />
       </StyleSheetManager>
     </ContextProvider>
-
   );
 }
 

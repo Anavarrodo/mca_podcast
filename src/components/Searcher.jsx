@@ -1,72 +1,69 @@
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { useEffect, useState } from "react";
+import styled from "styled-components";
 
 const Searcher = ({ defaultPodcasts, onChange }) => {
-    const [ numberLength, setNumberLength ] = useState();
+  const [numberLength, setNumberLength] = useState();
 
-    useEffect(() => {
+  useEffect(() => {
+    setNumberLength(defaultPodcasts.length);
+  }, [defaultPodcasts.length]);
 
-        setNumberLength( defaultPodcasts.length );
-
-    }, [defaultPodcasts.length] );
-
-    const filterBySearch = ( searchedWord ) => {
-        const filteredPodcasts = defaultPodcasts.filter(( podcast ) =>
-            podcast.title.label.toLowerCase().includes( searchedWord ) ||
-            podcast['im:artist'].label.toLowerCase().includes( searchedWord )
-        );
-    
-        if ( filteredPodcasts.length !== 0 ) {
-            onChange( filteredPodcasts );
-            setNumberLength( filteredPodcasts.length );
-        } else {
-            setNumberLength(0);
-            onChange( [] );
-        }
-      };
-
-    return (
-
-        <Container data-testid='searcher'>
-            <BoxLength>
-                <Number data-testid='number-element'>{ numberLength }</Number>
-            </BoxLength>
-            <SearchBox
-                placeholder='Filter podcasts'
-                onChange={ (e) => filterBySearch( e.target.value.toLowerCase() ) }
-            />
-        </Container>
-        
+  const filterBySearch = (searchedWord) => {
+    const filteredPodcasts = defaultPodcasts.filter(
+      (podcast) =>
+        podcast.title.label.toLowerCase().includes(searchedWord) ||
+        podcast["im:artist"].label.toLowerCase().includes(searchedWord)
     );
+
+    if (filteredPodcasts.length !== 0) {
+      onChange(filteredPodcasts);
+      setNumberLength(filteredPodcasts.length);
+    } else {
+      setNumberLength(0);
+      onChange([]);
+    }
+  };
+
+  return (
+    <Container data-testid="searcher">
+      <BoxLength>
+        <Number data-testid="number-element">{numberLength}</Number>
+      </BoxLength>
+      <SearchBox
+        placeholder="Filter podcasts"
+        onChange={(e) => filterBySearch(e.target.value.toLowerCase())}
+      />
+    </Container>
+  );
 };
 
 export default Searcher;
 
 const Container = styled.div`
-    display: flex;
-    margin-top: 32px;
+  display: flex;
+  margin-top: 32px;
 `;
 const BoxLength = styled.div`
-    background: lightblue;
-    border-radius: 30%;
-    width: 50px;
-    height: 25px;
-    margin-right: 20px;
-    display: flex;
-    background: #5E97F6;
+  background: lightblue;
+  border-radius: 30%;
+  width: 50px;
+  height: 25px;
+  margin-right: 20px;
+  display: flex;
+  background: #5e97f6;
 `;
 
 const Number = styled.span`
-    margin: auto;
-    font-family: Montserrat-Bold;
-    color: #fefefe;
+  margin: auto;
+  font-family: Montserrat-Bold;
+  color: #fefefe;
 `;
 
 const SearchBox = styled.input`
-    border: 1px solid #D1D7DC;
-    border-radius: 3px;
-    font-family: Montserrat-Regular;
-    &:focus {
-        outline: none;
-    }
+  border: 1px solid #d1d7dc;
+  border-radius: 3px;
+  font-family: Montserrat-Regular;
+  &:focus {
+    outline: none;
+  }
 `;
