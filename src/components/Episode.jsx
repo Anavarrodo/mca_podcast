@@ -37,7 +37,7 @@ const Container = styled.div`
   border-bottom: 1px solid #d1d7dc;
   border-right: 1px solid #d1d7dc;
   border-left: 1px solid #d1d7dc;
-  box-shadow: 0 4px 2px -2px #d1d7dc;
+  box-shadow: 0 4px 14px 0px #d1d7dc;
   padding: 10px;
   height: fit-content;
 `;

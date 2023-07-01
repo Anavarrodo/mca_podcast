@@ -75,7 +75,7 @@ const BoxTitle = styled.div`
   border-bottom: 1px solid #d1d7dc;
   border-right: 1px solid #d1d7dc;
   border-left: 1px solid #d1d7dc;
-  box-shadow: 0 4px 2px -2px #d1d7dc;
+  box-shadow: 0 4px 14px 0px #d1d7dc;
   padding: 12px;
 `;
 
@@ -90,7 +90,7 @@ const TablaContainer = styled.table`
   border-bottom: 1px solid #d1d7dc;
   border-right: 1px solid #d1d7dc;
   border-left: 1px solid #d1d7dc;
-  box-shadow: 0 4px 2px -2px #d1d7dc;
+  box-shadow: 0 4px 14px 0px #d1d7dc;
   margin-top: 24px;
   padding: 12px;
 `;

@@ -43,7 +43,7 @@ const Box = styled.div`
   border-bottom: 1px solid #d1d7dc;
   border-right: 1px solid #d1d7dc;
   border-left: 1px solid #d1d7dc;
-  box-shadow: 0 4px 2px -2px #d1d7dc;
+  box-shadow: 0 4px 14px 0px #d1d7dc;
   position: relative;
   width: calc(30% - 30px);
   box-sizing: border-box;
@@ -56,8 +56,9 @@ const Image = styled.img`
   position: inherit;
   left: 50%;
   width: 75%;
-  transform: translate(-50%, -7%);
+  transform: translate(-50%, 0%);
   cursor: pointer;
+  margin: 20px 0px;
 `;
 
 const Line = styled.div`
