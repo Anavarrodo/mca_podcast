@@ -1,8 +1,32 @@
-# My Project
+# My Project (mca_podcast)
 
 This project was created by Ana Navarro.
 
+## Requirements
+
+This test consists of creating a mini-application for listening to music podcasts.
+The application will only has three views:
+
+- Main View
+- Details of a podcast
+- Details of a podcast episode
+
+It is a Single Page Application, so navigation is always be performed on the client side, without completely refreshing the main document at any point. The application has a development mode in which assets are served unminimized, and another production mode.
+
+## Technologies Used
+
+- React.js v18.2.0
+- React Router DOM v6
+- Styled Components v6.0.0-rc.5
+- Axios v1.4.0
+- Fast XML Parser v4.2.5
+- Moment.js v2.29.4
+- Vite v4.3.9
+- Jest v29.5.0
+
 ## Getting Started
+
+First, install [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/). Then, clone this repository to your local machine.
 
 In the project directory, you can run the following commands:
 
