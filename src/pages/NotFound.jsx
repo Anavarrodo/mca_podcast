@@ -8,7 +8,7 @@ const NotFound = () => {
   useEffect(() => {
     setCurrentLocation("NoFound");
   }, [setCurrentLocation]);
-  return <Message>Oops, página no encontrada</Message>;
+  return <Message data-testid="not_found">Oops, página no encontrada</Message>;
 };
 
 export default NotFound;
