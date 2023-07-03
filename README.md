@@ -58,3 +58,9 @@ Your app is ready to be deployed!
 
 Runs the app in production mode.\
 Open [http://localhost:4173/](http://localhost:4173/) to view it in your browser.
+
+### `yarn cypress`
+
+The command is used to open the Cypress graphical interface in your project. Cypress is an end-to-end (E2E) testing tool for web applications, and its graphical interface allows you to visually run and manage your tests.
+
+To use the Cypress graphical interface, your project needs to be running locally. The Cypress interface requires your web application to be accessible via a local server in order to interact with and run tests against it.

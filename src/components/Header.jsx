@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <Container data-testid="header">
-      <Link onClick={handleClick}>
+      <Link onClick={handleClick} data-testid="header-text">
         <Title>Podcaster</Title>
       </Link>
 

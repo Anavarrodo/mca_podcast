@@ -42,7 +42,10 @@ const BoxEpisodes = ({ info, id }) => {
           {items?.length > 0 &&
             items.map((item, i) => {
               return (
-                <tr key={`${item.guid["#text"]}${i}`}>
+                <tr
+                  key={`${item.guid["#text"]}${i}`}
+                  data-testid="item-episodes"
+                >
                   <Cell>
                     <NameEpisode
                       onClick={() =>
@@ -113,5 +116,5 @@ const Cell = styled.td`
 
 const NameEpisode = styled.div`
   cursor: pointer;
-  color:  #5e97f6;;
+  color: #5e97f6;
 `;
