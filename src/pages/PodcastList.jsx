@@ -1,4 +1,10 @@
-import { useEffect, useState, useContext, useCallback } from "react";
+import {
+  useEffect,
+  useState,
+  useContext,
+  useCallback,
+  useLayoutEffect,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/context";
 import apiServices from "../services/api";
@@ -18,6 +24,10 @@ const PodcastList = () => {
   );
   const [podcastsFilter, setPodcastsFilter] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  useLayoutEffect(() => {
+    setPodcastsFilter(podcastsOriginal);
+  }, [podcastsOriginal]);
 
   const getApi = useCallback(() => {
     apiServices
@@ -40,8 +50,6 @@ const PodcastList = () => {
     } else {
       setCurrentLocation("List");
     }
-
-    setPodcastsFilter(podcastsOriginal);
   }, [podcastsOriginal, getApi, setCurrentLocation, loading]);
 
   const getFilterPodcats = (search) => {
